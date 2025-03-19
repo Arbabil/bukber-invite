@@ -76,7 +76,7 @@
             document.getElementById('invitation-page').classList.add('fade-in');
         }
         function toggleMusic() {
-            var audio = document.getElementById("background-music.png");
+            var audio = document.getElementById("background-music");
             if (audio.paused) {
                 audio.play();
             } else {
@@ -93,7 +93,7 @@
         <div class="card">
             <img src="logo.png" alt="Logo" class="logo">
             <button class="music-button" onclick="toggleMusic()">
-                <img src="play-button.png" alt="Play Music">
+                <img src="background-music.png" alt="Play Music">
             </button>
             <audio id="background-music" loop>
                 <source src="music.mp3" type="audio/mpeg">

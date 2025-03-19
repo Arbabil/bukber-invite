@@ -8,26 +8,19 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            padding: 20px;
         }
-        .page1 {
-            background: url('background.jpg') no-repeat center center/cover;
-            width: 100%;
-            height: 100vh;
+        .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-        }
-        .page2 {
-            background: url('background2.jpeg') no-repeat center center/cover;
-            width: 100%;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        }
+        .hidden {
+            display: none;
+        }
+        .fade-in {
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeIn 1s forwards;
@@ -41,7 +34,6 @@
         .card {
             background: rgba(255, 255, 255, 0.7);
             max-width: 500px;
-            margin: 20px auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -78,6 +70,11 @@
         }
     </style>
     <script>
+        function showInvitation() {
+            document.getElementById('intro-page').classList.add('hidden');
+            document.getElementById('invitation-page').classList.remove('hidden');
+            document.getElementById('invitation-page').classList.add('fade-in');
+        }
         function toggleMusic() {
             var audio = document.getElementById("background-music");
             if (audio.paused) {
@@ -86,22 +83,13 @@
                 audio.pause();
             }
         }
-
-        function showPage2() {
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'flex';
-        }
     </script>
 </head>
 <body>
-
-    <!-- Halaman pertama -->
-    <div id="page1" class="page1">
-        <button onclick="showPage2()" class="btn">Klik di sini</button>
+    <div id="intro-page" class="container" style="background: url('background.jpg') no-repeat center center/cover;">
+        <button class="btn" onclick="showInvitation()">Klik di Sini</button>
     </div>
-
-    <!-- Halaman kedua -->
-    <div id="page2" class="page2" style="display:none;">
+    <div id="invitation-page" class="container hidden" style="background: url('image.png') no-repeat center center/cover;">
         <div class="card">
             <img src="logo.png" alt="Logo" class="logo">
             <button class="music-button" onclick="toggleMusic()">
@@ -118,10 +106,14 @@
             <p class="details">⏰ Waktu: 17.00 WIB - Selesai</p>
             <p class="details">📍 Lokasi: Kedai Bakso Reuwas, Rancabuaya, Caringin, Garut Regency, West Java</p>
             <p>Semoga acara ini dapat mempererat tali silaturahmi kita semua.</p>
+
+            <!-- Iuran Info -->
+            <p><strong>*</strong> Harap membawa Uang sebesar Rp 30.000-Rp 50.000 untuk acara buka puasa bersama.</p>
+
             <a href="https://forms.gle/FxAAdPDpm7yax6b98" class="btn" target="_blank">Konfirmasi Kehadiran</a>
             <p class="footer">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
         </div>
     </div>
-
 </body>
 </html>
+

@@ -33,10 +33,15 @@
             font-size: 28px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: moveText 2s infinite alternate;
+        }
+        @keyframes moveText {
+            from { transform: translateX(0); }
+            to { transform: translateX(10px); }
         }
         .btn {
             display: inline-block;
-            background: #4CAF50;
+            background: black;
             color: white;
             padding: 10px 20px;
             margin-top: 20px;
@@ -45,7 +50,7 @@
             font-size: 16px;
         }
         .btn:hover {
-            background: #45a049;
+            background: #333;
         }
         .hidden {
             display: none;
@@ -75,6 +80,11 @@
     </div>
     <div id="invitation-screen" class="container hidden">
         <div class="card">
+            <img src="logo.png" alt="Logo" width="100">
+            <audio controls autoplay style="display:block; margin: 10px auto;">
+                <source src="music.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung tag audio.
+            </audio>
             <h1>Undangan Buka Puasa Bersama</h1>
             <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
             <p>Kami mengundang Anda untuk menghadiri acara buka puasa bersama:</p>

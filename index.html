@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('background.jpg') no-repeat center center/cover;
             text-align: center;
             padding: 20px;
         }
@@ -18,33 +17,50 @@
             align-items: center;
             height: 100vh;
         }
-        .welcome {
+        .hidden {
+            display: none;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .logo {
+            width: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+        .music-button {
+            background: none;
+            border: none;
+            cursor: pointer;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            margin: 10px auto;
         }
-        .welcome img {
-            width: 120px;
-            margin-bottom: 20px;
-        }
-        .welcome h1 {
-            font-size: 28px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            animation: moveText 2s infinite alternate;
-        }
-        @keyframes moveText {
-            from { transform: translateX(0); }
-            to { transform: translateX(10px); }
+        .music-button img {
+            width: 40px;
         }
         .btn {
             display: inline-block;
             background: black;
             color: white;
             padding: 10px 20px;
-            margin-top: 20px;
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
@@ -52,34 +68,12 @@
         .btn:hover {
             background: #333;
         }
-        .hidden {
-            display: none;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.7);
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-        }
-        .music-button {
-            position: relative;
-            margin-top: 10px;
-            background: red;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 50%;
-            font-size: 16px;
-            cursor: pointer;
-        }
     </style>
     <script>
         function showInvitation() {
-            document.getElementById('welcome-screen').classList.add('hidden');
-            document.getElementById('invitation-screen').classList.remove('hidden');
+            document.getElementById('intro-page').classList.add('hidden');
+            document.getElementById('invitation-page').classList.remove('hidden');
+            document.getElementById('invitation-page').classList.add('fade-in');
         }
         function toggleMusic() {
             var audio = document.getElementById("background-music");
@@ -92,15 +86,15 @@
     </script>
 </head>
 <body>
-    <div id="welcome-screen" class="welcome">
-        <img src="logo.png" alt="Logo">
-        <h1>Wilujeng Sumping Alumni Angkatan 7</h1>
-        <button class="btn" onclick="showInvitation()">Klik di sini</button>
+    <div id="intro-page" class="container" style="background: url('background.jpg') no-repeat center center/cover;">
+        <button class="btn" onclick="showInvitation()">Klik di Sini</button>
     </div>
-    <div id="invitation-screen" class="container hidden">
+    <div id="invitation-page" class="container hidden" style="background: url('image.png') no-repeat center center/cover;">
         <div class="card">
-            <img src="logo.png" alt="Logo" width="100">
-            <button class="music-button" onclick="toggleMusic()">▶</button>
+            <img src="logo.png" alt="Logo" class="logo">
+            <button class="music-button" onclick="toggleMusic()">
+                <img src="play-button.png" alt="Play Music">
+            </button>
             <audio id="background-music" loop>
                 <source src="music.mp3" type="audio/mpeg">
                 Browser Anda tidak mendukung tag audio.

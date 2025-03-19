@@ -8,19 +8,26 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
-        .container {
+        .page1 {
+            background: url('background.jpg') no-repeat center center/cover;
+            width: 100%;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+        }
+        .page2 {
+            background: url('background2.jpeg') no-repeat center center/cover;
+            width: 100%;
             height: 100vh;
-        }
-        .hidden {
-            display: none;
-        }
-        .fade-in {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeIn 1s forwards;
@@ -34,6 +41,7 @@
         .card {
             background: rgba(255, 255, 255, 0.7);
             max-width: 500px;
+            margin: 20px auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -70,11 +78,6 @@
         }
     </style>
     <script>
-        function showInvitation() {
-            document.getElementById('intro-page').classList.add('hidden');
-            document.getElementById('invitation-page').classList.remove('hidden');
-            document.getElementById('invitation-page').classList.add('fade-in');
-        }
         function toggleMusic() {
             var audio = document.getElementById("background-music");
             if (audio.paused) {
@@ -83,13 +86,22 @@
                 audio.pause();
             }
         }
+
+        function showPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
+        }
     </script>
 </head>
 <body>
-    <div id="intro-page" class="container" style="background: url('background.jpg') no-repeat center center/cover;">
-        <button class="btn" onclick="showInvitation()">Klik di Sini</button>
+
+    <!-- Halaman pertama -->
+    <div id="page1" class="page1">
+        <button onclick="showPage2()" class="btn">Klik di sini</button>
     </div>
-    <div id="invitation-page" class="container hidden" style="background: url('image.png') no-repeat center center/cover;">
+
+    <!-- Halaman kedua -->
+    <div id="page2" class="page2" style="display:none;">
         <div class="card">
             <img src="logo.png" alt="Logo" class="logo">
             <button class="music-button" onclick="toggleMusic()">
@@ -110,5 +122,6 @@
             <p class="footer">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
         </div>
     </div>
+
 </body>
 </html>
